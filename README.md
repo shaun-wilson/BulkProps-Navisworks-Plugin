@@ -10,7 +10,7 @@ This plugin was created by me, Shaun Wilson, from Perth, Western Australia. I am
 
 # License
 
-Refer to the [LICENSE.md](https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin/blob/main/license.md) file that is included on this website, as part of the source-code files, and as part of the downloadable releases.
+Refer to the [LICENSE.md file](https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin/blob/main/LICENSE.md) that is included on this website, as part of the source-code files, and as part of the downloadable releases.
 
 # Download
 
@@ -58,10 +58,10 @@ Each Property Config has a field for;
 * A **Name**, which is a simple text string.
 * A **Process** to apply to the property - see the [Processes](#tab-and-property-processes) section for explanations of the various options.
 * A **Value**, an advanced text string that is able to copy property values from other tabs, which may also be on ancestor items. The following rules apply;
-  * The plugin will look for instructions in `{ }` brackets, of the fromat "Tab.Property".
-  * To select from an ancestor, prefix with as many "..\" as required.
+  * The plugin will look for instructions in `{ }` brackets, of the fromat "TabName.PropertyName".
+  * To select from an ancestor, prefix with as many "..\\" as required.
   * If you want to use curly-brackets in your value, escape them with another bracket, ie `{{Regular Text In Brackets}}`, as per C#.NET string.Format() rules.
-  * An example value is: `This item is {Item.Layer}, and its parent is called {..\Item.Name}'`
+  * An example value is: `This item is {Item.Layer}, and its parent is called {..\Item.Name}`
   * When you run the plugin, if a tab, property, or ancestor cannot be found, this will cause the current process to raise an error, stop, and undo its changes.
 
 ### Buttons
@@ -77,7 +77,7 @@ Alternatively, you can **Process Configs**, aka **Process Bulk Property Configs*
 ### Tab and Property Processes
 
 There are currently 4 process available to both Tabs and Properties. They mimic SQL functions, as described below;
- * **Upsert** will **Insert** the tab or property if it does not exist, or **Update** ones that do. Thus, it will always occur.
+ * **Upsert** will **Insert** the tab or property if it does not exist, or **Update** an existing one. Thus, it will always occur.
  * **Insert** will only occur if a tab or property with the same name does not already exist.
  * **Update** will only occur if a tab or property with the same name already exists.
  * **Delete** will remove the tab or property, but can only affect user-defined tabs and their properties (not imported ones).
@@ -125,7 +125,9 @@ Note that the XML format requires the characters `& < >` to be escaped and repla
     
 ## Plugin .NET Interface (Advanced)
 
-Whilst using the plugin in accordance with the [License](#license), you are able to change the way the plugin works by replacing certain classes. You do this by instantiating the class `Processor` found within the `BulkProps.Process` namespace, and using the constructor `Processor(IGetSelectionSetForConfig, IProcessTabName, IProcessPropertyName, IProcessPropertyValue)` along with your own implementations of the necessary interface(s).
+Whilst using the plugin in accordance with the [License](#license), you are able to change the way the plugin works by replacing certain classes. You do this by instantiating the class `Processor` found within the `BulkProps.Process` namespace, and using the constructor
+`Processor(IGetModelItemsForConfig, IProcessTabName, IProcessPropertyName, IProcessPropertyValue)`
+along with your own implementations of the necessary interface(s).
 
 The functionality of the 4 interfaces are as follows;
 
