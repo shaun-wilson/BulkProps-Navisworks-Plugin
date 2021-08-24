@@ -2,7 +2,7 @@
 
 Bulk Properties (aka BulkProps) is a Navisworks Manage plugin that allows bulk creation and modification of user defined tabs and properties.  It works with Navisworks Manage 2022 only at this stage.
 
-![Screenshot the Editor v2022.1.0.0](https://github.com/shaun-wilson/BulkProps-Navisworks-2022-Plugin-Test/blob/main/Screenshot-v2022.1.0.0.png)
+![Screenshot the Editor v2022.1.0.0](https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin/blob/main/Screenshot-v2022.1.0.0.png)
 
 # About / Contact
 
