@@ -1,0 +1,276 @@
+﻿<UserControl x:Class="BulkProps.UI.SingleTabEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BulkProps.UI"
+             xmlns:viewmodel="clr-namespace:BulkProps.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:SingleTabEditor}"
+             mc:Ignorable="d" 
+             Height="Auto" Width="500">
+    <UserControl.Resources>
+        <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
+        <ControlTemplate x:Key="GroupBoxTemplate1" TargetType="{x:Type GroupBox}">
+            <Grid SnapsToDevicePixels="true">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="6"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="6"/>
+                </Grid.RowDefinitions>
+                <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="Transparent" CornerRadius="4" Grid.ColumnSpan="4" Grid.Column="0" Grid.RowSpan="3" Grid.Row="1"/>
+                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="White" CornerRadius="4" Grid.ColumnSpan="4" Grid.RowSpan="3" Grid.Row="1">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="3">
+                        <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="White" CornerRadius="2"/>
+                    </Border>
+                </Border>
+                <Border x:Name="Header" Grid.Column="1" Padding="3,1,3,0" Grid.RowSpan="2" Grid.Row="0">
+                    <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                </Border>
+                <ContentPresenter Grid.ColumnSpan="2" Grid.Column="1" Margin="{TemplateBinding Padding}" Grid.Row="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Resources>
+
+    <Grid x:Name="MasterGridCell" Height="Auto" Margin="0,0,0,5" Width="Auto">
+        <ScrollViewer x:Name="MasterGridCellScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" SizeChanged="MasterGridCellScrollViewerSizeChanged">
+            <Grid x:Name="MasterGridCellScrollViewerGrid" MinWidth="370" Margin="5,0,5,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" MinHeight="240"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Template="{DynamicResource GroupBoxTemplate1}" Height="Auto" Padding="0,0,5,5" Margin="0,5,0,0">
+                    <DockPanel Margin="0,10,0,0">
+                        <Label Margin="0" DockPanel.Dock="Left" Width="80">Item Source</Label>
+                        
+                        <ComboBox x:Name="comboboxItemsSource" DockPanel.Dock="Right" Margin="0"
+                                    SelectedValue="{Binding ItemsSource, NotifyOnTargetUpdated=True, Mode=TwoWay}" SelectedValuePath="Tag"
+                                    TargetUpdated="comboboxItemsSourceTargetUpdated"
+                                    DropDownOpened="comboboxItemsSourceTreeUpdate" SelectionChanged="comboboxItemsSourceChanged"
+                                    HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Width="Auto" Height="26">
+                            <ComboBoxItem Content="Current Selection"/>
+                            <ComboBoxItem 
+                                Margin="0" Padding="-2" Tag="{Binding Text, ElementName=comboboxItemsSourceTextbox, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
+                                <DockPanel HorizontalAlignment="Left" Width="{Binding ActualWidth, ElementName=comboboxItemsSource}">
+                                    <TextBlock DockPanel.Dock="Left" Text="{x:Static local:Icons.Rename}" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="4,0,8,0"/>
+                                    <TextBox x:Name="comboboxItemsSourceTextbox" Margin="0" Padding="2" MinWidth="200" HorizontalAlignment="Stretch" LostFocus="comboboxItemsSourceTextboxLostFocus" >
+                                        <TextBox.Style>
+                                            <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                                <Style.Resources>
+                                                    <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                                        <VisualBrush.Visual>
+                                                            <Label Content="Enter Selection Set Path Here" Foreground="LightGray" />
+                                                        </VisualBrush.Visual>
+                                                    </VisualBrush>
+                                                </Style.Resources>
+                                                <Style.Triggers>
+                                                    <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                                    </Trigger>
+                                                    <Trigger Property="Text" Value="{x:Null}">
+                                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                                        <Setter Property="Background" Value="White" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                </DockPanel>
+                            </ComboBoxItem>
+                            <ComboBoxItem Content="--- Selection Sets ---" IsEnabled="False" Foreground="Gray"/>
+                            <ComboBoxItem Padding="0" Margin="0">
+                                <TreeView x:Name="comboboxItemsSourceTree" ItemsSource="{Binding SelectionSetTree}" Padding="0" Margin="0" BorderThickness="0" SelectedItemChanged="comboboxItemsSourceTreeSelectedItemChanged">
+                                    <TreeView.Resources>
+                                        <HierarchicalDataTemplate DataType="{x:Type viewmodel:SelectionSetTreeNode}" ItemsSource="{Binding Children}">
+                                            <TextBlock Text="{Binding Path=DisplayName}"/>
+                                        </HierarchicalDataTemplate>
+                                    </TreeView.Resources>
+                                </TreeView>
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </DockPanel>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" x:Name="WrapFilters" Header="Apply to Items of Type" Height="Auto" Margin="0,5,0,0">
+                    <ItemsControl ItemsSource="{Binding SelectionFilters}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel HorizontalAlignment="Left"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox Content="{Binding Name}" IsChecked="{Binding IsChecked}" Margin="10,10,10,5" Width="70"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" Header="Alter Property Tab" Margin="0,5,0,0">
+                    <Grid x:Name="DataGrid1Ancestor">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <DockPanel Grid.Row="0">
+                            <DockPanel x:Name="WrapDock1" DockPanel.Dock="Right" Margin="0,10,0,0">
+                                <Label x:Name="LabelGrow1" Margin="00,0,0,0" DockPanel.Dock="Left" MaxWidth="80">Process</Label>
+                                <ComboBox ItemsSource="{x:Static viewmodel:SingleTabEditor.TabProcessorOptions}"
+                                    DisplayMemberPath="ProcessorName"
+                                    SelectedValue="{Binding SelectedTabProcessor, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{x:Static viewmodel:Tooltips.Processors}" ToolTipService.ShowDuration="99999"
+                                    VerticalContentAlignment="Center" MinWidth="70"/>
+                            </DockPanel>
+                            <DockPanel DockPanel.Dock="Left" Margin="0,10,0,0">
+                                <Label x:Name="WrapLabel3" DockPanel.Dock="Left" Width="80">Tab Name</Label>
+                                <TextBox Text="{Binding TabName}" VerticalContentAlignment="Center"></TextBox>
+                            </DockPanel>
+                        </DockPanel>
+
+                        <DataGrid Grid.Row="1" Margin="0,10,0,0" Width="Auto"
+                                x:Name="DataGrid1"
+                                IsEnabled="{Binding SelectedTabProcessor.UsesPropertyProcessors}"
+                                CanUserAddRows="False"
+                                CanUserDeleteRows="False"
+                                CanUserResizeColumns="True"
+                                CanUserSortColumns="True"
+                                CanUserReorderColumns="False"
+                                HorizontalScrollBarVisibility="Disabled"
+                                ItemsSource="{Binding PropertyProcessorConfigs}"
+                                AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+
+                                <DataGridTemplateColumn Header="Property Name" MinWidth="70" Width="3*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Text="{Binding Path=PropertyName, UpdateSourceTrigger=PropertyChanged}"
+                                                VerticalContentAlignment="Center" BorderThickness="0" Padding="5,0,0,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="Process" MinWidth="70" Width="Auto">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ComboBox
+                                                ItemsSource="{x:Static viewmodel:SingleTabEditor.PropertyProcessorOptions}"
+                                                DisplayMemberPath="ProcessorName"
+                                                SelectedValue="{Binding Path=PropertyProcessor, UpdateSourceTrigger=PropertyChanged}"
+                                                ToolTip="{x:Static viewmodel:Tooltips.Processors}" ToolTipService.ShowDuration="99999"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="Value" MinWidth="70" Width="5*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Text="{Binding Path=PropertyValue, UpdateSourceTrigger=PropertyChanged}"
+                                                IsEnabled="{Binding PropertyProcessor.UsesValue}"
+                                                VerticalContentAlignment="Center" BorderThickness="0" Padding="5,0,0,0"
+                                                ToolTip="{x:Static viewmodel:Tooltips.PropertyValue}" ToolTipService.ShowDuration="99999" ToolTipService.InitialShowDelay="1000"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="{x:Static local:Icons.Delete}" MinWidth="28" Width="Auto">
+                                    <DataGridTemplateColumn.HeaderStyle>
+                                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                                            <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+                                            <Setter Property="FontSize" Value="16" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </DataGridTemplateColumn.HeaderStyle>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="{x:Static local:Icons.Clear}"
+                                            Command="{Binding Path=DataContext.DeletePropertyProcessorConfigCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" 
+                                            CommandParameter="{Binding}"
+                                            FontFamily="Segoe MDL2 Assets" VerticalContentAlignment="Center" FontSize="16" Foreground="Red" FontWeight="Bold" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Button Grid.Row="2" Command="{Binding AddPropertyProcessorConfigCommand}" IsEnabled="{Binding SelectedTabProcessor.UsesPropertyProcessors}">
+                            <DockPanel Margin="0">
+                                <Label Content="{x:Static local:Icons.Add}" IsEnabled="{Binding SelectedTabProcessor.UsesPropertyProcessors}" FontFamily="Segoe MDL2 Assets" VerticalContentAlignment="Center" FontSize="16" Foreground="DarkGreen" FontWeight="Bold" />
+                                <Label Content="Add" />
+                            </DockPanel>
+                        </Button>
+
+                    </Grid>
+                </GroupBox>
+
+                <Button Grid.Row="3" Height="30" Margin="5,10,5,0" Click="ProcessConfig" VerticalContentAlignment="Center">
+                    <DockPanel>
+                        <Label Content="{x:Static local:Icons.Tag}" FontFamily="Segoe MDL2 Assets" FontSize="16" FontWeight="Bold" />
+                        <Label Content="Process Bulk Property Changes" FontSize="14" />
+                    </DockPanel>
+                </Button>
+
+                <GroupBox Grid.Row="4" Header="Preset Configs" Margin="0,10,0,0" Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Margin="0,0,6,0" Click="SaveConfigFile" VerticalContentAlignment="Center">
+                            <DockPanel>
+                                <Label Content="{x:Static local:Icons.Save}" FontFamily="Segoe MDL2 Assets" FontSize="16" FontWeight="Bold" />
+                                <Label Content="Save" />
+                            </DockPanel>
+                        </Button>
+                        <Button Grid.Column="1" Margin="3,0,3,0" Click="LoadConfigFile" VerticalContentAlignment="Center">
+                            <DockPanel>
+                                <Label Content="{x:Static local:Icons.Load}" FontFamily="Segoe MDL2 Assets" FontSize="16" FontWeight="Bold" />
+                                <Label Content="Load" />
+                            </DockPanel>
+                        </Button>
+                        <Button Grid.Column="2" Margin="6,0,0,0" Click="ProcessConfigFiles" VerticalContentAlignment="Center">
+                            <DockPanel>
+                                <Label Content="{x:Static local:Icons.OpenWith}" FontFamily="Segoe MDL2 Assets" FontSize="16" FontWeight="Bold" />
+                                <Label Content="Process Configs" />
+                            </DockPanel>
+                        </Button>
+                    </Grid>
+                </GroupBox>
+
+                <Expander Grid.Row="5" Header="Help / About / License" MaxWidth="{Binding ElementName=DataGrid1, Path=ActualWidth}" Expanded="Expander_Expanded" >
+                    <TextBlock TextAlignment="Center">           
+                    <Hyperlink NavigateUri="{x:Static local:Help.Uri}" RequestNavigate="Hyperlink_RequestNavigate">
+                        <StackPanel>
+                            <TextBlock Text="{x:Static local:Help.Text1}"/>
+                            <TextBlock Text="{x:Static local:Help.Text2}"/>
+                            <TextBlock Text="{x:Static local:Help.Url}"/>
+                        </StackPanel>
+                    </Hyperlink>
+                </TextBlock>
+                </Expander>
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+
+</UserControl>
