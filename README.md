@@ -6,7 +6,7 @@ Bulk Properties (aka BulkProps) is a Navisworks Manage plugin that allows bulk c
 
 # About / Contact
 
-This plugin was created by me, Shaun Wilson, from Perth, Western Australia. I am available for consultation regarding your Digital Engineering requirements, and specialise in bespoke solutions. I am also proficient in technologies such as BIM, VR (UnrealEngine4), CAD (eg Tekla Structures), and data management (eg SQL databases). I can be contacted here or via email at [swilson.digitalengineering@gmail.com](mailto:swilson.digitalengineering@gmail.com)
+This plugin was created by me, Shaun Wilson, from Perth, Western Australia. I am available for paid consultation regarding your Digital Engineering requirements, and specialise in bespoke solutions. I am also proficient in technologies such as BIM, VR (UnrealEngine4), CAD (eg Tekla Structures), and data management (eg SQL databases). I can be contacted here or via email at [swilson.digitalengineering@gmail.com](mailto:swilson.digitalengineering@gmail.com)
 
 # License
 
@@ -32,7 +32,7 @@ In Navisworks Manage, there will be tab called "Tool add-ins", and it will have 
 
 This is the main interface for managing properties. Here you can configure a property tab, apply the changes, save the config to a file, load a config from file, or load and apply bulk configs.
 
-The following screenshot shows a configured tab using many of the features, and the generated property tab can be seen at the bottom of the window.
+The screenshot at the top shows a configured tab using many of the features, and the generated property tab can be seen at the bottom of the window.
 
 ### Item Source
 
