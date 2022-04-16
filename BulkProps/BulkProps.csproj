@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>C:\Program Files\Autodesk\Navisworks Manage 2022\Plugins\$(MSBuildProjectName)\</OutputPath>
+    <OutputPath>C:\Program Files\Autodesk\Navisworks Manage 2023\Plugins\$(MSBuildProjectName)\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -88,7 +88,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Sgnl.Navisworks.2022">
+    <PackageReference Include="Sgnl.Navisworks.2023">
       <Version>3.0.0</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>

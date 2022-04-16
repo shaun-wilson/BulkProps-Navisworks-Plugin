@@ -20,7 +20,7 @@ Download compiled plugins for the current and previous versions from the [Releas
 
 The first version of this plugin (v1.0.0) was for Navisworks Manage 2022. Support for older releases is possible, but there is no intention of doing so. Newer releases may be supported on demand.
 
-The code on the master Git branch is the latest - currently v1.0.0 for Navisworks Manage 2022. Older stable versions will have code "archived" in separate branches.
+The code on the master Git branch is the latest - currently v1.0.0 for Navisworks Manage 2023. Older stable versions will have code "archived" in separate branches.
 
 # Install
 
