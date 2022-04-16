@@ -3,7 +3,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartAction>Program</StartAction>
     <StartProgram>C:\Program Files\Autodesk\Navisworks Manage 2022\Roamer.exe</StartProgram>
-    <StartArguments>-OpenFile $(USERPROFILE)\Desktop\ClashTest.nwd</StartArguments>
+    <StartArguments>-OpenFile C:\Program Files\Autodesk\Navisworks Manage 2022\api\COM\examples\ClashTest.nwd</StartArguments>
     <StartWorkingDirectory>
     </StartWorkingDirectory>
   </PropertyGroup>
