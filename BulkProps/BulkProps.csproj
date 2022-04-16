@@ -34,76 +34,6 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AdWindows, Version=3.1.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\AdWindows.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Autodesk.Navisworks.Api, Version=19.0.1366.6, Culture=neutral, PublicKeyToken=d85e58fa5af9b484, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\Autodesk.Navisworks.Api.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Autodesk.Navisworks.Automation, Version=19.0.1366.6, Culture=neutral, PublicKeyToken=d85e58fa5af9b484, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\Autodesk.Navisworks.Automation.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Autodesk.Navisworks.Clash, Version=19.0.1366.6, Culture=neutral, PublicKeyToken=d85e58fa5af9b484, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\Autodesk.Navisworks.Clash.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Autodesk.Navisworks.ComApi, Version=19.0.1366.6, Culture=neutral, PublicKeyToken=d85e58fa5af9b484, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\Autodesk.Navisworks.ComApi.dll</HintPath>
-      <Private>False</Private>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Autodesk.Navisworks.Controls, Version=19.0.1366.6, Culture=neutral, PublicKeyToken=d85e58fa5af9b484, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\Autodesk.Navisworks.Controls.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Autodesk.Navisworks.Interop.ComApi, Version=19.0.1366.6, Culture=neutral, PublicKeyToken=d85e58fa5af9b484, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\Autodesk.Navisworks.Interop.ComApi.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Autodesk.Navisworks.Interop.ComApiAutomation, Version=19.0.1366.6, Culture=neutral, PublicKeyToken=d85e58fa5af9b484, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\Autodesk.Navisworks.Interop.ComApiAutomation.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Autodesk.Navisworks.Interop.Timeliner, Version=19.0.1366.6, Culture=neutral, PublicKeyToken=d85e58fa5af9b484, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\Autodesk.Navisworks.Interop.Timeliner.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Autodesk.Navisworks.Resolver, Version=19.0.1366.6, Culture=neutral, PublicKeyToken=d85e58fa5af9b484, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\Autodesk.Navisworks.Resolver.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Autodesk.Navisworks.Takeoff, Version=19.0.1366.6, Culture=neutral, PublicKeyToken=d85e58fa5af9b484, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\Autodesk.Navisworks.Takeoff.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Autodesk.Navisworks.Timeliner, Version=19.0.1366.6, Culture=neutral, PublicKeyToken=d85e58fa5af9b484, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\Autodesk.Navisworks.Timeliner.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="navisworks.gui.common, Version=19.0.1366.6, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\navisworks.gui.common.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="navisworks.gui.generic, Version=19.0.1366.6, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\navisworks.gui.generic.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="navisworks.gui.interface, Version=19.0.1366.6, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\navisworks.gui.interface.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="navisworks.gui.roamer, Version=19.0.1366.6, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\navisworks.gui.roamer.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="navisworks.roamer.plugin, Version=19.0.1366.6, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\packages\Navisworks.2022.1.0.3\lib\net48\navisworks.roamer.plugin.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -152,13 +82,16 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="UI\SingleTabEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Sgnl.Navisworks.2022">
+      <Version>3.0.0</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
