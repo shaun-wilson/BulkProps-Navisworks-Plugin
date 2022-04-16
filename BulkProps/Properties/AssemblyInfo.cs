@@ -29,9 +29,7 @@ using System.Runtime.InteropServices;
 //      Minor Version
 //      Revision
 //
-// You can specify all the values or you can default the Build and Revision Numbers
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
+// Whilst developing for a new version/release, an optional release candidate number can be appended to the AssemblyFileVersion.
 [assembly: AssemblyVersion("2023.1.0.0")]
-[assembly: AssemblyFileVersion("2023.1.0.0")]
+[assembly: AssemblyFileVersion("2023.1.0.0-rc1")]
 [assembly: NeutralResourcesLanguage("en")]
