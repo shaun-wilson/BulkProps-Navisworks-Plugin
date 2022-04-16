@@ -1,6 +1,6 @@
 # Bulk Properties for Navisworks Manage
 
-Bulk Properties (aka BulkProps) is a Navisworks Manage plugin that allows bulk creation and modification of user defined tabs and properties.  It works with Navisworks Manage 2022 only at this stage.
+Bulk Properties (aka BulkProps) is a Navisworks Manage plugin that allows bulk creation and modification of user defined tabs and properties.
 
 ![Screenshot the Editor v2022.1.0.0](https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin/blob/main/Screenshot-v2022.1.0.0.png)
 
@@ -14,11 +14,17 @@ Refer to the [LICENSE.md file](https://github.com/shaun-wilson/BulkProps-Naviswo
 
 # Download
 
-Download the compiled plugin from the [Releases](https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin/releases/) page.
+Download compiled plugins for the current and previous versions from the [Releases](https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin/releases/) page.
+
+## Versions
+
+The first version of this plugin (v1.0.0) was for Navisworks Manage 2022. Support for older releases is possible, but there is no intention of doing so. Newer releases may be supported on demand.
+
+The code on the master Git branch is the latest - currently v1.0.0 for Navisworks Manage 2022. Older stable versions will have code "archived" in separate branches.
 
 # Install
 
-Copy the contents of the zip file to the plugin folder of your Navisworks Manage install, eg `C:\Program Files\Autodesk\Navisworks Manage 2022\Plugins\BulkProps\BulkProps.dll`
+Copy the contents of the zip file to the plugin folder of your Navisworks Manage install, ie `C:\Program Files\Autodesk\Navisworks Manage {Version}\Plugins\BulkProps\BulkProps.dll`
 
 The plugin has not been tested with Navisworks Simulate.
 
@@ -153,4 +159,4 @@ The Debug Build procedure has been configured to write directly into the `C:\Pro
 
 To enable development of the plugin on machines that do not have Navisworks Manage installed, the Solution uses a NuGet package to provide References of the Navisworks Manage API. The actual package used is not a fixed requirement - it just needs to provide the necessary `Autodesk.*` DLL's. These reference DLL's are NOT copied on Build.
 
-Your Visual Studio environment needs to have the correct .NET Framework installed, as dictacted by the Navisworks Manage API. For 2022, the version is 4.8.
+Your Visual Studio environment needs to have the correct .NET Framework installed, as dictacted by the Navisworks Manage API. The current version is 4.8.
