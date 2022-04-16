@@ -146,3 +146,11 @@ This receives the `PropertyConfig.Name` value from the Editor / XML content (whe
 ### IProcessPropertyValue
 
 This receives the `PropertyConfig.Value` value from the Editor / XML content (including when it is null or empty), and uses the value to return a formatted value. For example, this could be replaced with a class that can use rules to count the amount of child items.
+
+## Build Guide (Advanced)
+
+The Debug Build procedure has been configured to write directly into the `C:\Program Files\Autodesk\Navisworks Manage {Version}\Plugins\` folder, and then start Navisworks with a demo model from the SDK. You may want to adjust this behaviour to suit your machine (by editing the `BulkProps.csproj` and `BulkProps.csproj.user` files, or via the Visual Studio UI options). Alternatively, use the Release Procedure, which simply outputs the plugins files to the local `\bin\` folder.
+
+To enable development of the plugin on machines that do not have Navisworks Manage installed, the Solution uses a NuGet package to provide References of the Navisworks Manage API. The actual package used is not a fixed requirement - it just needs to provide the necessary `Autodesk.*` DLL's. These reference DLL's are NOT copied on Build.
+
+Your Visual Studio environment needs to have the correct .NET Framework installed, as dictacted by the Navisworks Manage API. For 2022, the version is 4.8.
