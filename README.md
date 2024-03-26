@@ -6,7 +6,7 @@ Bulk Properties (aka BulkProps) is a Navisworks Manage plugin that allows bulk c
 
 # About / Contact
 
-This plugin was created by me, Shaun Wilson, from Perth, Western Australia. I am available for paid consultation regarding your Digital Engineering requirements, and specialise in bespoke solutions. I am also proficient in technologies such as BIM, VR (UnrealEngine4), CAD (eg Tekla Structures), and data management (eg SQL databases). I can be contacted here or via email at [swilson.digitalengineering@gmail.com](mailto:swilson.digitalengineering@gmail.com)
+This plugin was created by me, Shaun Wilson, from Perth, Western Australia. I can be contacted here or via email at [swilson.digitalengineering@gmail.com](mailto:swilson.digitalengineering@gmail.com)
 
 # License
 
