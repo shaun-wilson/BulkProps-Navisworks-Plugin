@@ -4,14 +4,14 @@
 
     <!-- Project information. -->
     <PackageId>BulkProps</PackageId>
-    <Product>BulkProps Plugin For Navisworks Manage 2024</Product>
+    <Product>BulkProps Plugin For Navisworks Manage 2025</Product>
     <Description>BulkProps is a Navisworks Manage plugin that uses rules to alter the Properties of model objects.</Description>
     <Copyright>Copyright © 2025</Copyright>
     <Authors>Shaun Wilson</Authors>
     <PackageProjectUrl>https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin/blob/main/LICENSE.md</PackageLicenseUrl>
-    <Version>2024.1.0.0</Version>
-    <InformationalVersion>2024.1.0-rc1</InformationalVersion>
+    <Version>2025.1.0.0</Version>
+    <InformationalVersion>2025.1.0-rc1</InformationalVersion>
     <GenerateAssemblyInformationalVersionAttribute>true</GenerateAssemblyInformationalVersionAttribute>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 
@@ -29,7 +29,7 @@
     <NeutralLanguage>en</NeutralLanguage>
 
     <!-- System information. -->
-    <NavisworksPath>C:/Program Files/Autodesk/Navisworks Manage 2024/</NavisworksPath>
+    <NavisworksPath>C:/Program Files/Autodesk/Navisworks Manage 2025/</NavisworksPath>
 
   </PropertyGroup>
 
@@ -44,7 +44,7 @@
       </ItemGroup>
       <ItemGroup Condition="!Exists('$(NavisworksPath)/Autodesk.Navisworks.Api.dll')">
     -->
-    <PackageReference Include="Sgnl.Navisworks.2024" Version="*" ExcludeAssets="runtime" />
+    <PackageReference Include="Sgnl.Navisworks.2025" Version="*" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <!-- Config for "Debug" build. -->
