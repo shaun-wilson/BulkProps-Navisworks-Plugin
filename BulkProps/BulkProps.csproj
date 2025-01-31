@@ -1,101 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B7FEF71E-68FD-4712-BF92-AFA225A1B6AA}</ProjectGuid>
+
+    <!-- Project information. -->
+    <PackageId>BulkProps</PackageId>
+    <Product>BulkProps Plugin For Navisworks Manage 2023</Product>
+    <Description>BulkProps is a Navisworks Manage plugin that uses rules to alter the Properties of model objects.</Description>
+    <Copyright>Copyright © 2025</Copyright>
+    <Authors>Shaun Wilson</Authors>
+    <PackageProjectUrl>https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin/blob/main/LICENSE.md</PackageLicenseUrl>
+    <Version>2023.0.1</Version>
+    <AssemblyVersion>2023.0.1</AssemblyVersion>
+
+    <!-- MSBuild settings. -->
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BulkProps</RootNamespace>
-    <AssemblyName>BulkProps</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
+    <Configurations>Debug;Release;</Configurations>
+    <TargetFramework>net48-windows</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <UsingMicrosoftNETSdk>true</UsingMicrosoftNETSdk>
+    <UsingNETSdkDefaults>true</UsingNETSdkDefaults>
+    <Nullable>disable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <NeutralLanguage>en</NeutralLanguage>
+
+    <!-- System information. -->
+    <NavisworksPath>C:/Program Files/Autodesk/Navisworks Manage 2023/</NavisworksPath>
+
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+
+  <!-- Required references. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
+  <!-- Not sure if this "fallback" code works, so leaving it commented out for now. -->
+    <!-- 
+      </ItemGroup>
+      <ItemGroup Condition="Exists('$(NavisworksPath)/Autodesk.Navisworks.Api.dll')">
+        <PackageReference Include="Autodesk.Navisworks.Api" ExcludeAssets="runtime" HintPath="$(NavisworksPath)/Autodesk.Navisworks.Api.dll" />
+      </ItemGroup>
+      <ItemGroup Condition="!Exists('$(NavisworksPath)/Autodesk.Navisworks.Api.dll')">
+    -->
+    <PackageReference Include="Sgnl.Navisworks.2023" Version="*" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <!-- Config for "Debug" build. -->
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>C:\Program Files\Autodesk\Navisworks Manage 2022\Plugins\$(MSBuildProjectName)\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x64</PlatformTarget>
+    <Optimize>false</Optimize>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+
+  <!-- Config for "Release" build. -->
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\$(MSBuildProjectName)\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="WindowsFormsIntegration" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Process\Process.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Process\Helpers.cs" />
-    <Compile Include="Process\PropertyProcessors.cs" />
-    <Compile Include="Process\TabProcessors.cs" />
-    <Compile Include="Process\Exceptions.cs" />
-    <Compile Include="Process\Processor.cs" />
-    <Compile Include="Process\ProcessPropertyName.cs" />
-    <Compile Include="Process\ProcessPropertyValue.cs" />
-    <Compile Include="Process\GetModelItemsForConfig.cs" />
-    <Compile Include="Process\ProcessTabName.cs" />
-    <Compile Include="UI\SingleTabEditor.xaml.cs">
-      <DependentUpon>SingleTabEditor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModel\RelayCommand.cs" />
-    <Compile Include="ViewModel\SingleTabEditor.cs" />
-    <Compile Include="Navisworks\AddInPlugins.cs" />
-    <Compile Include="Navisworks\DockPanePlugin.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="UI\SingleTabEditor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Sgnl.Navisworks.2022">
-      <Version>3.0.0</Version>
-      <ExcludeAssets>runtime</ExcludeAssets>
-    </PackageReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
+
 </Project>
