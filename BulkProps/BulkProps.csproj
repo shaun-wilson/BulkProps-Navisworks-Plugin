@@ -10,8 +10,10 @@
     <Authors>Shaun Wilson</Authors>
     <PackageProjectUrl>https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin/blob/main/LICENSE.md</PackageLicenseUrl>
-    <Version>2023.0.1</Version>
-    <AssemblyVersion>2023.0.1</AssemblyVersion>
+    <Version>2023.1.0.0</Version>
+    <InformationalVersion>2023.1.0-rc1</InformationalVersion>
+    <GenerateAssemblyInformationalVersionAttribute>true</GenerateAssemblyInformationalVersionAttribute>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 
     <!-- MSBuild settings. -->
     <OutputType>Library</OutputType>
