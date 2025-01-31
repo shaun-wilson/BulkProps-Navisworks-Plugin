@@ -6,7 +6,8 @@ Bulk Properties (aka BulkProps) is a Navisworks Manage plugin that allows bulk c
 
 # About / Contact
 
-This plugin was created by me, Shaun Wilson, from Perth, Western Australia. I can be contacted here or via email at [swilson.digitalengineering@gmail.com](mailto:swilson.digitalengineering@gmail.com)
+This plugin was created by me - Shaun Wilson - of Perth, Western Australia. <br>
+You can contact me via [email](mailto:47620271+shaun-wilson@users.noreply.github.com), or by opening a Github issue.
 
 # License
 
@@ -14,21 +15,19 @@ Refer to the [LICENSE.md file](https://github.com/shaun-wilson/BulkProps-Naviswo
 
 # Download
 
-Download compiled plugins for the current and previous versions from the [Releases](https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin/releases/) page.
+Download compiled plugins from the [Releases](https://github.com/shaun-wilson/BulkProps-Navisworks-Plugin/releases/) page.
 
 ## Versions
 
-The first version of this plugin (v1.0.0) was for Navisworks Manage 2022. Support for older releases is possible, but there is no intention of doing so. Newer releases may be supported on demand.
+This plugin was created alongside **Navisworks Manage** 2022. It has not been tested with ***Simulate***. Updates to suit newer versions of Navisworks may be released from time to time, or you can attempt to compile the plugin yourself. The code on the master Git branch is the latest version. Older versions are "archived" in separate branches when they are superseded.
 
-The code on the master Git branch is the latest - currently v1.0.0 for Navisworks Manage 2022. Older stable versions will have code "archived" in separate branches.
+<sup><sub>Note - Plugins do not work with Navisworks **Freedom**. This is a restriction of Navisworks Freedom, not this plugin.</sub></sup>
 
 # Install
 
 Copy the contents of the zip file to the plugin folder of your Navisworks Manage install, ie `C:\Program Files\Autodesk\Navisworks Manage {Version}\Plugins\BulkProps\BulkProps.dll`
 
-The plugin has not been tested with Navisworks Simulate.
-
-Plugins do not work with Navisworks Freedom - this is a restriction of Navisworks Freedom, not this plugin.
+Alternatively, you can locate the plugin anywhere and then start Navisworks with the 'AddPluginAssembly' [command line switch](https://help.autodesk.com/view/NAV/2025/ENU/?guid=GUID-62870620-2B92-4FD8-A788-E0687F7030AD), ie `"C:\Program Files\Autodesk\Navisworks Manage {Version}\roamer.exe" -AddPluginAssembly "D:\BulkProps\BulkProps.dll"`
 
 # Instructions
 
@@ -155,8 +154,16 @@ This receives the `PropertyConfig.Value` value from the Editor / XML content (in
 
 ## Build Guide (Advanced)
 
-The Debug Build procedure has been configured to write directly into the `C:\Program Files\Autodesk\Navisworks Manage {Version}\Plugins\` folder, and then start Navisworks with a demo model from the SDK. You may want to adjust this behaviour to suit your machine (by editing the `BulkProps.csproj` and `BulkProps.csproj.user` files, or via the Visual Studio UI options). Alternatively, use the Release Procedure, which simply outputs the plugins files to the local `\bin\` folder.
+The plugin has been updated to use the latest .NET Core SDK. This means the "Solution" can still be edited with software such as Visual Studio (paid software), and alternatively it can now be edited using simpler editors like VSCode, and then compiled using the dotnet CLI tool (both free). These alternatives can also be run as "portable" applications, which helps if you don't have admin rights on your PC.
 
-To enable development of the plugin on machines that do not have Navisworks Manage installed, the Solution uses a NuGet package to provide References of the Navisworks Manage API. The actual package used is not a fixed requirement - it just needs to provide the necessary `Autodesk.*` DLL's. These reference DLL's are NOT copied on Build.
+#### If you have admin rights;
+* You can follow the instructions described here - https://learn.microsoft.com/en-us/dotnet/core/install/windows#install-the-sdk
+  * The instructions are basically to open powershell and run `winget install Microsoft.DotNet.SDK.8`
+  * If you get an error about winget not being installed, then follow the troubleshooting here - https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget
+#### If you don't have admin rights;
+* Get 'dotnet.exe' via the script here - https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script
+#### Make sure everything is properly configured;
+* Make sure nuget has a source configured. If it doesn't, add one with `dotnet nuget add source "https://api.nuget.org/v3/index.json" --name "nuget.org"`
+* You may need to install a "Developer Pack" to compile the '.NET Framework 4.8' code, which can be done via `winget install -e --id Microsoft.DotNet.Framework.DeveloperPack_4`
 
-Your Visual Studio environment needs to have the correct .NET Framework installed, as dictacted by the Navisworks Manage API. The current version is 4.8.
+*Note*: To enable development of the plugin on machines that do not have Navisworks Manage installed, the Project references a NuGet package that has a copy of Navisworks Manage API. The actual package used is not a fixed requirement - it just needs to provide the necessary `Autodesk.*.dll` files.
